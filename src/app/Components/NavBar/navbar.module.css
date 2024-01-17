@@ -1,0 +1,16 @@
+.navbar {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px 10px 20px 10px;
+    font-size: 40px;
+    border-top: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+
+@media screen and (min-width:700px) {
+    .navbar{
+        display: none;
+    }
+}

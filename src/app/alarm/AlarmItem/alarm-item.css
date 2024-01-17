@@ -1,0 +1,151 @@
+.alarm-item-container {
+    border: 1px solid rgb(0, 0, 0, 0.1);
+    background: white;
+}
+
+.alarm-item {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.alarm {
+    display: flex;
+    flex-direction: column;
+}
+
+.time button {
+    border: transparent;
+}
+
+.time button i {
+    font-size: 30px;
+}
+
+.value {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.days {
+    font-size: 14px;
+}
+
+
+.options {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.toggle-button {
+    background-color: rgb(1, 122, 255);
+    height: 26px;
+    width: 48px;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    border-radius: 9999px;
+    border: transparent;
+    justify-content: flex-end;
+}
+
+.toggle-button.inactive {
+    background-color: rgb(206, 206, 206);
+    justify-content: flex-start;
+}
+
+.btn {
+    background-color: white;
+    height: 20px;
+    width: 20px;
+    border-radius: 9999px;
+}
+
+.option {
+    background-color: transparent;
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
+    border: none;
+
+}
+
+.hover-options {
+    width: 0;
+    opacity: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    overflow: hidden;
+    transition: 250ms ease-out;
+}
+
+.alarm-item:hover .hover-options {
+    width: 70px;
+    opacity: 1;
+}
+
+.option .fa-trash {
+    color: rgb(255, 105, 105);
+}
+
+.option .fa-pen-to-square {
+    color: rgb(0, 122, 255);
+}
+
+.editor {
+    display: flex;
+    padding: 10px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background: rgb(230, 242, 255);
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+}
+
+.time-input {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    font-weight: bold;
+    gap: 8px;
+}
+
+.time-input input {
+    flex: 1;
+    border-radius: 6px;
+    border: 1px solid rgb(206, 206, 206);
+    padding: 4px;
+
+}
+
+.cancel-btn,
+.create-alarm,
+.save-btn {
+    padding: 4px;
+    border: 1px solid rgb(206, 206, 206);
+    background: rgb(0, 122, 225);
+    color: white;
+    width: 100px;
+    font-size: 18px;
+    border-radius: 10px;
+}
+
+.create-alarm:disabled,
+.save-btn:disabled {
+    background-color: rgb(206, 206, 206);
+    color: azure;
+}
+
+.cancel-btn {
+    background: none;
+    color: red;
+    border: none;
+}
