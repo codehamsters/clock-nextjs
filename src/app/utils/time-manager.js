@@ -7,6 +7,14 @@ export const getTime = (now) => {
   return strTime.split(" ");
 };
 
+export const getTime24 = (now) => {
+  let strTime = now.toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "numeric",
+    hour12: false,
+  });
+  return strTime;
+};
 export const getDate = (now) => {
   let strDate = now.toLocaleDateString("en-US", {
     weekday: "long",

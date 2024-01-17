@@ -2,13 +2,12 @@
 import { useState, useEffect } from "react";
 import AlarmItem from "./AlarmItem/AlarmItem";
 import "./alarm.css";
-import { convertToAmPmFormat } from "../utils/time-manager";
+import { convertToAmPmFormat, getTime24 } from "../utils/time-manager";
 
 const Alarm = () => {
   const [alarms, setAlarms] = useState([]);
   const [activeCreate, setActiveCreate] = useState(false);
-  const [newAlarmTime, setNewAlarmTime] = useState("");
-  const [isValidTime, setIsValidTime] = useState(false);
+  const [newAlarmTime, setNewAlarmTime] = useState(getTime24(new Date()));
 
   const handleDelete = (e) => {
     alarms.pop(e.target.key);
@@ -20,7 +19,6 @@ const Alarm = () => {
         <div className={"alarms " + (activeCreate && "scroll-lock")}>
           {alarms.map((alarm, index) => {
             const alarm12 = convertToAmPmFormat(alarm);
-            console.log(alarm12);
             return (
               <AlarmItem
                 key={index}
@@ -39,9 +37,6 @@ const Alarm = () => {
                   value={newAlarmTime}
                   onChange={(e) => {
                     setNewAlarmTime(e.target.value);
-                    if (newAlarmTime) {
-                      setIsValidTime(true);
-                    }
                   }}
                 />
               </div>
@@ -58,7 +53,6 @@ const Alarm = () => {
                     setAlarms([...alarms, newAlarmTime]);
                     setActiveCreate(false);
                   }}
-                  disabled={!isValidTime}
                 >
                   Create
                 </button>

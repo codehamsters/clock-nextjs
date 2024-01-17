@@ -1,7 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
 import "./alarm-item.css";
-import { convertToAmPmFormat, getTime } from "@/app/utils/time-manager";
+import {
+  convertToAmPmFormat,
+  getTime,
+  getTime24,
+} from "@/app/utils/time-manager";
 
 const AlarmItem = ({ time, meridian, handleDelete }) => {
   const [dateState, setDateState] = useState(new Date());
@@ -18,10 +22,9 @@ const AlarmItem = ({ time, meridian, handleDelete }) => {
   const [nowTime, nowMeridian] = getTime(dateState);
   const [alarmTime, setAlarmTime] = useState(time);
   const [alarmMeridian, setAlarmMeridian] = useState(meridian);
-  const [editedTime, setEditedTime] = useState("");
+  const [editedTime, setEditedTime] = useState(getTime24(new Date()));
   const [editUtil, setEditUtil] = useState(false);
   const [inactiveToggleBtnState, setInactiveToggleBtnState] = useState(false);
-  const [isValidTime, setIsValidTime] = useState(false);
 
   const handleSave = () => {
     setAlarmTime(convertToAmPmFormat(editedTime).time12);
@@ -30,7 +33,6 @@ const AlarmItem = ({ time, meridian, handleDelete }) => {
   };
 
   const checkAlarm = () => {
-    console.log(nowTime, nowMeridian, alarmTime, alarmMeridian);
     if (
       nowTime == alarmTime &&
       nowMeridian == alarmMeridian &&
@@ -85,9 +87,6 @@ const AlarmItem = ({ time, meridian, handleDelete }) => {
               value={editedTime}
               onChange={(e) => {
                 setEditedTime(e.target.value);
-                if (editedTime) {
-                  setIsValidTime(true);
-                }
               }}
             />
           </div>
@@ -100,11 +99,7 @@ const AlarmItem = ({ time, meridian, handleDelete }) => {
             >
               Cancel
             </button>
-            <button
-              className="save-btn"
-              onClick={handleSave}
-              disabled={!isValidTime}
-            >
+            <button className="save-btn" onClick={handleSave}>
               Save
             </button>
           </div>
