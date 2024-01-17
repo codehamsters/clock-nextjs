@@ -58,7 +58,7 @@ const Stopwatch = () => {
       lapTime: time - (laps.length > 0 ? laps[laps.length - 1].totalTime : 0),
       totalTime: time,
     };
-    setLaps((prevLaps) => [...prevLaps, newLap]);
+    setLaps((prevLaps) => [newLap, ...prevLaps]);
   };
 
   return (
@@ -83,9 +83,29 @@ const Stopwatch = () => {
       </div>
       <div className="laps">
         <div className="lap-grid">
-          <div>Lap</div>
-          <div>Time</div>
-          <div>Total</div>
+          <>
+            <div
+              style={{
+                fontWeight: "bold",
+              }}
+            >
+              Lap
+            </div>
+            <div
+              style={{
+                fontWeight: "bold",
+              }}
+            >
+              Time
+            </div>
+            <div
+              style={{
+                fontWeight: "bold",
+              }}
+            >
+              Total
+            </div>
+          </>
           {laps.map((lap) => (
             <>
               <div>{lap.lapNumber}</div>
